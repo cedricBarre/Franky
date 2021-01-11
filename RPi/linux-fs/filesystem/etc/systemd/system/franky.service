@@ -1,0 +1,10 @@
+[Unit]
+Description=Franky
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/opt/scripts/franky/franky-launcher.sh
+
+[Install]
+WantedBy=multi-user.target

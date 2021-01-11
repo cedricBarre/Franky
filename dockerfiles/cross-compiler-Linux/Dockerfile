@@ -11,7 +11,14 @@ RUN apt-get update && \
 
 # Compile from source using CMake
 CMD [ -d build ] || mkdir build && \
+    [ -d install ] || mkdir install && \
     cd build && \
     CC=/usr/bin/arm-linux-gnueabihf-gcc \
     CXX=/usr/bin/arm-linux-gnueabihf-g++ cmake ../ && \
-    make
+    make && \
+    mv franky ../install && \
+    cd ../install && \
+    mkdir -p opt/scripts/franky && \
+    mv franky opt/scripts/franky && \
+    tar -cvf franky.tar.gz . && \
+    rm opt -r
