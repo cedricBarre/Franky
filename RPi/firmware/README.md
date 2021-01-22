@@ -21,6 +21,6 @@ After the compressed file is extracted, the service must be restarted for the ne
 sudo systemctl restart franky
 ```
 
-**Note**: It is important to note that Docker be installed on the host system from which the code is compiled and built. See the following page for information on the installation of [Docker](https://docs.docker.com/get-docker/).
+**Note**: It is important to note that Docker needs to be installed on the host system from which the code is compiled and built. See the following page for information on the installation of [Docker](https://docs.docker.com/get-docker/).
 
 --------------------------------------------------------------------------------------------------
