@@ -3,14 +3,15 @@
 * in the robotic application
 */
 #include "Scheduling.h"
+#include "Logger.h"
 
 Scheduling::Scheduling() noexcept{
     
     this->cycle_lap = 1;
 }
 
-Scheduling::Scheduling(int usec) noexcept{
-    
+Scheduling::Scheduling(double usec) noexcept{
+
     this->cycle_lap = usec;
 }
 
@@ -35,6 +36,7 @@ double Scheduling::TriggerToc() {
 void Scheduling::CycleSleep() {
 
     double elapsed_time = TriggerToc();
-
-    std::this_thread::sleep_for(std::chrono::duration<double, std::ratio<1,1000000>>(cycle_lap - elapsed_time));
+    if (cycle_lap > elapsed_time) {
+        std::this_thread::sleep_for(std::chrono::duration<double, std::ratio<1,1000000>>(cycle_lap - elapsed_time));
+    }
 }

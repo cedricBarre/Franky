@@ -4,28 +4,23 @@
 * Author: Cedric Barre
 * Year: 2020
 */
-#include <stdio.h>
 
 #include "Scheduling.h"
+#include "Logger.h"
 
 int main(int argc, char *argv[]) {
+    
+    Logger *logger = Logger::GetLogger();
+    logger->PrintStamp();
 
-    printf("\n************************************************"
-           "*         FRANKY ROBOTICS APPLICATION          *"
-           "*                                              *"
-           "*           Firmware written in 2021           *"
-           "*             Author: Cedric Barre             *"
-           "*                                              *"
-           "************************************************\n");
-    printf("Initializing the main scheduler...\n");
-    Scheduling scheduler (5000);
-    printf("Finished initializing the main scheduler...\n");
+    LOG_INFO("Initializing the main scheduler...\n");
+    Scheduling scheduler (1000000.0f);
+    LOG_INFO("Finished initializing the main scheduler...\n");
 
     while(1) {
         scheduler.RecordTic();
 
-        printf("Cycle check\n");
-        
-        scheduler.RecordTic();
+        LOG_INFO("Cycle check\n");
+        scheduler.CycleSleep();
     }
 }

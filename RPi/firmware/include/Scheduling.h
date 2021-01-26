@@ -10,7 +10,7 @@ class Scheduling {
 
     public:
         Scheduling() noexcept;
-        Scheduling(int usec) noexcept;
+        Scheduling(double usec) noexcept;
         ~Scheduling(); 
 
         void    RecordTic();
